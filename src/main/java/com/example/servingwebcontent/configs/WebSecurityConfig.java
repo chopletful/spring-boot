@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/user*").access("hasAnyRole('ROLE_USER')")
+                .antMatchers("/user*").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
                 .antMatchers("/admin*").access("hasAnyRole('ROLE_ADMIN')")
                 .and().formLogin()  // Spring сам подставит свою логин форму
                 .successHandler(successUserHandler); // подключаем наш SuccessHandler для перенеправления по ролям
